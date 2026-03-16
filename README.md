@@ -1,166 +1,155 @@
-# NiftyScope — Live Nifty 50 Trading Dashboard
+# <img src="public/favicon.svg" width="28" alt="logo"/> NiftyScope — Live Nifty 50 Dashboard
 
-A real-time Nifty 50 market data dashboard built with Next.js, deployed on Vercel.
+<div align="center">
 
----
+**A real-time Nifty 50 market dashboard powered directly by NSE India's live data feed.**
 
-## Live Demo
-> Deploy to Vercel and paste your link here
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Visit_Site-black?style=for-the-badge)](https://your-app.vercel.app)
+[![GitHub](https://img.shields.io/badge/GitHub-NiftyScope-181717?style=for-the-badge&logo=github)](https://github.com/simran-bakshi/NiftyScope)
+[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=for-the-badge&logo=vercel)](https://vercel.com)
 
-## GitHub
-> Paste your GitHub repo link here
+![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)
+![Data Source](https://img.shields.io/badge/Data-NSE%20India%20Live-0052CC)
+![License](https://img.shields.io/badge/License-MIT-22c576)
 
----
-
-## What This App Does
-
-- Displays live prices, change, % change, volume, high/low for all 50 Nifty stocks
-- Shows Nifty 50 and Sensex index levels in the header
-- Auto-refreshes every 30 seconds with a live countdown timer
-- Heatmap view grouped by sector
-- Top 5 Gainers and Top 5 Losers sidebar
-- Sortable table (click any column header)
-- Filter by sector, search by company name or symbol
-- Market open/closed indicator (IST hours)
-- Responsive — works on mobile
+</div>
 
 ---
 
-## Tech Stack
+## 🌐 Live Demo
 
-| Layer | Technology | Why |
-|-------|-----------|-----|
-| Frontend | Next.js 14 (React) | File-based routing, SSR, API routes in one repo |
-| Backend | Next.js API Routes (Serverless) | Acts as a proxy — avoids CORS, no separate server needed |
-| Data Source | Yahoo Finance v7 API | Free, no auth key required, covers all NSE stocks |
-| Deployment | Vercel | Native Next.js support, zero-config deploy |
-| Fonts | Google Fonts (Syne + DM Mono) | Trading terminal aesthetic |
+> 🔗 **[https://your-app.vercel.app](https://your-app.vercel.app)**
+> *(Replace with your actual Vercel URL after deployment)*
 
 ---
 
-## Project Structure
+## ✨ Features
+
+- 📊 **Live Nifty 50 Data** — All 50 stocks with real-time price, change, volume, high/low
+- 🔴🟢 **Advances & Declines** — Instant market breadth summary bar
+- 🏆 **Top Gainers & Losers** — Top 5 movers updated every 30 seconds
+- 🌡️ **Sector Heatmap** — Color-coded visual grid grouped by sector
+- 🔃 **Sortable Table** — Click any column to sort ascending/descending
+- 🔍 **Search & Filter** — Filter by sector, search by company name or symbol
+- ⏱️ **Auto Refresh** — Live countdown timer, refreshes every 30 seconds
+- 🟢 **Market Status** — Shows Market Open / Closed based on IST hours
+- 📱 **Responsive** — Works on mobile, tablet, and desktop
+- ⚡ **No API Key Needed** — Uses NSE India's official public data feed
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology | Purpose |
+|---|---|---|
+| 🖥️ Frontend | Next.js 14 + React 18 | UI rendering, routing |
+| ⚙️ Backend | Next.js API Routes | Serverless proxy to NSE |
+| 📡 Data Source | NSE India (`stock-nse-india`) | Live market data |
+| 🎨 Styling | Pure CSS (dark terminal theme) | Custom design system |
+| 🚀 Deployment | Vercel | Zero-config hosting |
+| 🔤 Fonts | Syne + DM Mono (Google Fonts) | Trading terminal aesthetic |
+
+---
+
+## 📂 Project Structure
 
 ```
-nifty-dashboard/
+NiftyScope/
 │
-├── pages/                      ← Next.js routing (each file = a URL)
-│   ├── _app.js                 ← Wraps all pages, imports global CSS
-│   ├── index.js                ← Main dashboard page (route: "/")
-│   └── api/                    ← Backend API routes (serverless functions)
-│       ├── quotes.js           ← GET /api/quotes  → all 50 stock quotes
-│       └── index.js            ← GET /api/index   → Nifty 50 & Sensex index
+├── 📁 pages/
+│   ├── _app.js               # App entry, loads global CSS
+│   ├── index.js              # Main dashboard page (route: "/")
+│   └── 📁 api/
+│       ├── quotes.js         # GET /api/quotes → all 50 stocks live
+│       └── index.js          # GET /api/index  → Nifty 50 index level
 │
-├── components/                 ← Reusable UI components
-│   ├── MarketHeader.js         ← Top sticky header with index values
-│   ├── SummaryBar.js           ← Advance/Decline stats bar
-│   ├── StockTable.js           ← Main sortable/filterable stock table
-│   ├── GainersLosers.js        ← Top 5 gainers and losers cards
-│   └── HeatMap.js              ← Color-coded sector heatmap
+├── 📁 components/
+│   ├── MarketHeader.js       # Sticky header with index values + timer
+│   ├── SummaryBar.js         # Advances / Declines / Volume strip
+│   ├── StockTable.js         # Sortable, filterable main table
+│   ├── GainersLosers.js      # Top 5 gainers & losers cards
+│   └── HeatMap.js            # Color-coded sector heatmap
 │
-├── lib/                        ← Shared logic (no UI)
-│   ├── nifty50symbols.js       ← All 50 NSE symbols + names + sectors
-│   ├── formatters.js           ← Number/currency/volume formatting utils
-│   └── useMarketData.js        ← Custom React hook: fetching + polling
+├── 📁 lib/
+│   ├── nifty50symbols.js     # All 50 symbols, names, sectors
+│   ├── formatters.js         # ₹ price, volume, % formatting utils
+│   └── useMarketData.js      # Custom hook: fetching + 30s polling
 │
-├── styles/
-│   └── globals.css             ← All styles (dark terminal theme)
+├── 📁 styles/
+│   └── globals.css           # Full dark terminal theme
 │
-├── public/                     ← Static assets (favicon etc.)
 ├── package.json
 ├── next.config.js
-├── vercel.json                 ← Vercel deployment config
+├── vercel.json
 └── .gitignore
 ```
 
 ---
 
-## How the Data Flow Works
+## 🔄 How It Works
 
 ```
-Browser (React UI)
-      │
-      │  fetch('/api/quotes')  every 30s
-      ▼
-Next.js API Route (/pages/api/quotes.js)   ← runs on Vercel's servers
-      │
-      │  fetch Yahoo Finance v7 API
-      │  (server-to-server, no CORS issue)
-      ▼
-Yahoo Finance API
-https://query1.finance.yahoo.com/v7/finance/quote?symbols=TCS.NS,INFY.NS,...
-      │
-      │  returns raw JSON with price, change, volume etc.
-      ▼
-API Route enriches data (adds sector, display name, formats)
-      │
-      ▼
-Browser receives clean JSON → React state → renders table
+┌──────────────┐        ┌─────────────────────┐        ┌──────────────────┐
+│              │ fetch  │                     │ fetch  │                  │
+│   Browser    │──────► │  Next.js API Route  │──────► │   NSE India      │
+│  (React UI)  │        │  /api/quotes        │        │   Official API   │
+│              │◄─────  │  (Vercel Serverless)│◄────── │   Live Prices    │
+│ Renders table│  JSON  │  Cleans & enriches  │  JSON  │                  │
+└──────────────┘        └─────────────────────┘        └──────────────────┘
+       ↑
+  Re-fetches every 30s
 ```
 
-**Why the proxy pattern?**
-Yahoo Finance blocks direct browser requests (CORS policy). By routing through our own API endpoint, the request comes from a server (Vercel), which Yahoo allows.
+**Why a proxy?** NSE blocks direct browser requests (CORS policy). The API route runs server-side on Vercel, fetches from NSE freely, and returns clean JSON to your browser.
+
+**Which API exactly?**
+```
+https://www.nseindia.com/api/equity-stockIndices?index=NIFTY%2050
+```
+NSE India's own official endpoint — the same one their website uses internally. No third-party service, no API key, no rate limits.
 
 ---
 
-## How Auto-Refresh Works
-
-In `lib/useMarketData.js`:
-
-```js
-// Fetch on mount, then every 30 seconds
-useEffect(() => {
-  fetchAll();  // immediate first fetch
-  
-  const interval = setInterval(fetchAll, 30000);
-  return () => clearInterval(interval);  // cleanup on unmount
-}, []);
-```
-
-A countdown timer in the header shows seconds until the next refresh. The user can also click the ↻ button to refresh manually at any time.
-
----
-
-## Local Development Setup
+## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18+ ([download](https://nodejs.org))
-- npm (comes with Node.js)
-- Git
+- Node.js 18+ → [nodejs.org](https://nodejs.org)
+- Git → [git-scm.com](https://git-scm.com)
 
-### Steps
+### Run Locally
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/YOUR_USERNAME/nifty-dashboard.git
-cd nifty-dashboard
+git clone https://github.com/simran-bakshi/NiftyScope.git
+cd NiftyScope
 
 # 2. Install dependencies
 npm install
 
-# 3. Start the development server
+# 3. Start development server
 npm run dev
 
 # 4. Open in browser
 # http://localhost:3000
 ```
 
-That's it — no `.env` file, no API keys, no database setup needed.
+> ✅ No `.env` file needed. No API keys. Just clone and run.
 
 ---
 
-## Deployment on Vercel
+## ☁️ Deploy to Vercel
 
-### Method 1: Vercel Dashboard (Recommended — easiest)
+### Option 1 — Vercel Dashboard (Recommended)
 
-1. Push your code to GitHub
-2. Go to [vercel.com](https://vercel.com) → Sign up with GitHub
-3. Click **"Add New Project"**
-4. Select your `nifty-dashboard` repository
-5. Framework will auto-detect as **Next.js**
-6. Click **Deploy**
-7. Done — you get a `https://your-app.vercel.app` URL
+1. Push code to GitHub ✅
+2. Go to [vercel.com](https://vercel.com) → **Add New Project**
+3. Import your `NiftyScope` repository
+4. Framework auto-detects as **Next.js**
+5. Click **Deploy**
+6. 🎉 Live in ~60 seconds
 
-### Method 2: Vercel CLI
+### Option 2 — Vercel CLI
 
 ```bash
 npm install -g vercel
@@ -170,36 +159,24 @@ vercel --prod
 
 ---
 
-## Pushing to GitHub
-
-```bash
-# Inside your project folder
-git init
-git add .
-git commit -m "Initial commit: Nifty 50 live dashboard"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/nifty-dashboard.git
-git push -u origin main
-```
-
----
-
-## API Endpoints
+## 📡 API Reference
 
 ### `GET /api/quotes`
-
 Returns live data for all 50 Nifty stocks.
 
-**Response:**
 ```json
 {
   "success": true,
-  "timestamp": "2024-01-15T10:30:00.000Z",
+  "source": "NSE India",
   "count": 50,
+  "indexMeta": {
+    "price": 22345.65,
+    "change": 123.45,
+    "changePct": 0.56
+  },
   "data": [
     {
-      "symbol": "TCS.NS",
-      "displaySymbol": "TCS",
+      "symbol": "TCS",
       "name": "TCS",
       "sector": "IT",
       "price": 3456.75,
@@ -208,77 +185,43 @@ Returns live data for all 50 Nifty stocks.
       "volume": 1234567,
       "high": 3470.00,
       "low": 3420.50,
-      "open": 3430.00,
-      "prevClose": 3433.30,
-      "week52High": 4255.00,
-      "week52Low": 3056.05,
-      "marketCap": 1254000000000
+      "prevClose": 3433.30
     }
   ]
 }
 ```
 
 ### `GET /api/index`
-
-Returns Nifty 50 and Sensex index levels.
-
-**Response:**
-```json
-{
-  "success": true,
-  "nifty": {
-    "price": 22345.65,
-    "change": 123.45,
-    "changePct": 0.56,
-    "high": 22400.00,
-    "low": 22200.00,
-    "prevClose": 22222.20
-  },
-  "sensex": {
-    "price": 73456.78,
-    "change": 345.67,
-    "changePct": 0.47,
-    "prevClose": 73111.11
-  }
-}
-```
+Returns Nifty 50 and Bank Nifty index levels.
 
 ---
 
-## Key Concepts Explained
+## ⚠️ Disclaimer
 
-### Next.js API Routes
-Files inside `pages/api/` automatically become HTTP endpoints. `pages/api/quotes.js` → `GET /api/quotes`. No Express, no separate server, just a file.
-
-### React Custom Hook
-`useMarketData.js` is a custom hook that packages all the fetching, polling, and state logic together. Any component can call `const { quotes, loading } = useMarketData()` without caring how the data is fetched.
-
-### Serverless Functions
-On Vercel, `pages/api/*.js` files run as AWS Lambda functions. They spin up on request, run, and shut down. No always-on server cost.
-
-### `useMemo` for Performance
-Filtering and sorting 50 stocks on every keystroke would be slow. `useMemo` caches the result and only recalculates when dependencies (`quotes`, `sortKey`, `search`, etc.) actually change.
+> This dashboard is built for **educational purposes only**.
+> Data is sourced from NSE India's public endpoints.
+> Not intended as financial advice. Always verify on official sources before making investment decisions.
 
 ---
 
-## Known Limitations
+## 👩‍💻 Author
 
-- Yahoo Finance is an unofficial API — it may occasionally be slow or return errors
-- Data has a ~15 second delay from actual market (Yahoo Finance limitation)
-- Pre-market and after-market data may differ from official NSE data
-- NSE does not have a free official public API
+**Simran Bakshi**
 
----
-
-## Possible Improvements
-
-- [ ] Add a candlestick chart for individual stocks (using `recharts` or `lightweight-charts`)
-- [ ] Add portfolio tracker (localStorage)
-- [ ] WebSocket-based real-time updates
-- [ ] Add alerts when a stock moves > X%
-- [ ] PWA support for mobile home screen
+[![GitHub](https://img.shields.io/badge/GitHub-simran--bakshi-181717?logo=github&style=flat-square)](https://github.com/simran-bakshi)
 
 ---
 
-## License
-MIT — free to use, modify, and submit for assignments.
+## 📄 License
+
+This project is licensed under the **MIT License** — free to use, modify, and distribute.
+
+---
+
+<div align="center">
+
+Made with ❤️ and ☕ &nbsp;|&nbsp; Data by 📊 NSE India
+
+⭐ **Star this repo if you found it helpful!**
+
+</div>
