@@ -19,8 +19,8 @@
 
 ## 🌐 Live Demo
 
-> 🔗 **[https://your-app.vercel.app](https://your-app.vercel.app)**
-> *(Replace with your actual Vercel URL after deployment)*
+> 🔗 **[https://your-app.vercel.app](https://niftyscopeapp.vercel.app/)**
+
 
 ---
 
