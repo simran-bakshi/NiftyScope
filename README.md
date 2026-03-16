@@ -20,8 +20,6 @@
 ## 🌐 Live Demo
 
 > 🔗 **[https://your-app.vercel.app](https://niftyscopeapp.vercel.app/)**
-
-
 ---
 
 ## ✨ Features
