@@ -4,7 +4,7 @@
 
 **A real-time Nifty 50 market dashboard powered directly by NSE India's live data feed.**
 
-[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Visit_Site-black?style=for-the-badge)](https://your-app.vercel.app)
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Visit_Site-black?style=for-the-badge)](https://niftyscopeapp.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-NiftyScope-181717?style=for-the-badge&logo=github)](https://github.com/simran-bakshi/NiftyScope)
 [![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=for-the-badge&logo=vercel)](https://vercel.com)
 
