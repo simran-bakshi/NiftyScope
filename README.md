@@ -19,7 +19,7 @@
 
 ## 🌐 Live Demo
 
-> 🔗 **[https://niftyscopeapp.vercel.app/](Click Here)**
+> 🔗 **[https://niftyscopeapp.vercel.app/]**
 ---
 
 ## ✨ Features
